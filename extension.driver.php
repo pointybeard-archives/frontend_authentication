@@ -177,10 +177,6 @@
 				$this->__expireCookie();
 			}
 
-			$types = $context['page_data']['type'];
-			
-			if(!$bOnLoginPage && (!is_array($types) || empty($types) || !in_array($context['parent']->Configuration->get('page-type', 'frontend-authentication'), $types))) return;
-
 			## Check for post data, use it for creation of a cookie
 			if(isset($_POST['action']['front-end-authentication']['login'])){
 				
@@ -230,9 +226,12 @@
 				$this->__expireCookie();
 				
 			}
-						
+							
+			$types = $context['page_data']['type'];
+			
 			## No luck, kick to login page
-			$context['page_data'] = $context['page']->resolvePage(trim($context['parent']->Configuration->get('login-page', 'frontend-authentication'), '/'));
+			if(!$bOnLoginPage && is_array($types) && in_array($context['parent']->Configuration->get('page-type', 'frontend-authentication'), $types))
+				$context['page_data'] = $context['page']->resolvePage(trim($context['parent']->Configuration->get('login-page', 'frontend-authentication'), '/'));
 			
 		}
 		
