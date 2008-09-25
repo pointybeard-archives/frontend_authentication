@@ -88,10 +88,11 @@
 					$body = self::__replaceParams(stripslashes($this->_Parent->Configuration->get('email-body', 'frontend-authentication')), $params);
 
 					General::sendEmail($username, 'noreply@' . parse_url($params['root'], PHP_URL_HOST), $params['website-name'], $subject, $body);
-										
+					define_safe('FRONT_END_AUTHENTICATION_EMAIL_SENT', true);
+					return;					
 				}
 				
-				define_safe('FRONT_END_AUTHENTICATION_EMAIL_SENT', true);
+				define_safe('FRONT_END_AUTHENTICATION_EMAIL_SENT', false);
 				return;
 			}
 		}
@@ -103,7 +104,7 @@
 			}
 			
 			elseif(defined('FRONT_END_AUTHENTICATION_EMAIL_SENT')){
-				$context['xml']->appendChild(new XMLElement('front-end-authentication', NULL, array('password-retrieval-email-status' => 'sent')));				
+				$context['xml']->appendChild(new XMLElement('front-end-authentication', NULL, array('password-retrieval-email-status' => (FRONT_END_AUTHENTICATION_EMAIL_SENT == true ? 'sent' : 'failed'))));				
 			}
 			
 		}
