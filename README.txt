@@ -44,11 +44,12 @@ This extension is useful for protecting specific pages of your Symphony powered 
 	</form>
 
 - Go to system preferences and be sure to select the username and password fields appropriately
+
 - On the system preferences page, choose this page as your login page from the dropbox
 
-
-
 - Any page with the same type as the one you specified in the system preferences will auto-magically display the login page contents instead
+
+- To log out, add "?front-end-authentication-logout=true" to any URL
 
 [TIPS]
 
@@ -63,3 +64,5 @@ This extension is useful for protecting specific pages of your Symphony powered 
 You can customise the email on the preferences page
 
 - It is recommended that you use the "Unique Input" field for the username. This can be found at http://beta.overture21.com/forum/comments.php?DiscussionID=269
+
+- Setting this extension to use Sessions instead of Cookies (found in the system preferences) will mean the user is logged out as soon as the browser is closed.
