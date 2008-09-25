@@ -4,7 +4,7 @@ Front End Authentication
 - **Version:** 1.0
 - **Author:** Alistair Kearney (<alistair@symphony21.com>)
 - **Build Date:** 25th Sept 2008
-- **Requirements:** Latest Symphony 2 Beta
+- **Requirements:** Latest Symphony 2 Beta ([See here for earliest compatible tree](http://github.com/symphony/symphony-2/tree/b8501ca60d6a4c3f9db1c26c40874da1de0d6748))
 
 
 This extension is useful for protecting specific pages of your Symphony powered site. Based on either Sessions or Cookies
