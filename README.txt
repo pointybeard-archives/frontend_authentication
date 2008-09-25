@@ -1,4 +1,3 @@
-
 Front End Authentication
 ------------------------------------
 
@@ -12,8 +11,7 @@ This extension is useful for protecting specific pages of your Symphony powered 
 
 [INSTALLATION]
 
-** Note: If you have cloned from the git repository, please rename the resulting folder to "frontend_authentication"
-
+** Note: The latest version can alway be grabbed with "git clone git://github.com/pointybeard/frontend_authentication.git"
 
 1. Upload the 'frontend_authentication' folder in this archive to your Symphony 'extensions' folder.
 
@@ -25,4 +23,43 @@ This extension is useful for protecting specific pages of your Symphony powered 
 
 [USAGE]
 
-## TODO: Documentation to come
+- Create a new section with 1 field for the username and password
+
+- Create a login page with a form resembling the following:
+
+	<form method="POST" action="">
+
+		<xsl:if test="//front-end-authentication/@status = 'invalid'">
+			<h1>Authentication Failed! Please check your details</h1>
+		</xsl:if>
+
+		<xsl:if test="//front-end-authentication/@password-retrieval-email-status = 'sent'">
+			<h1>Email sent. Please check your inbox.</h1>
+		</xsl:if>
+
+		<label>Username: <input name="front-end-authentication[username]" type="text"/></label>
+		<label>Password: <input name="front-end-authentication[password]" type="password"/></label>
+		<input type="submit" name="action[front-end-authentication][login]" value="Login"/>
+		<p>Forgot your password? <a href="{$root}/login/forgot/">Forgot your password?</a></p>
+	</form>
+
+- Go to system preferences and be sure to select the username and password fields appropriately
+- On the system preferences page, choose this page as your login page from the dropbox
+
+
+
+- Any page with the same type as the one you specified in the system preferences will auto-magically display the login page contents instead
+
+[TIPS]
+
+- If you wish for your users to be able to retrieve passwords, ensure that your usernames are email addresses, then create a forgot password page with a form similar to:
+
+	<form method="POST" action="{$root}/login/">
+		<p>Enter your email address below and you will be sent an email containing your password</p>
+  		<label>Email Address: <input name="front-end-authentication[username]" type="text" /></label>
+	  	<input type="submit" name="action[front-end-authentication][forgot]" value="Go" />
+	</form>
+
+You can customise the email on the preferences page
+
+- It is recommended that you use the "Unique Input" field for the username. This can be found at http://beta.overture21.com/forum/comments.php?DiscussionID=269
