@@ -12,6 +12,9 @@ This extension is useful for protecting specific pages of your Symphony powered 
 
 [INSTALLATION]
 
+** Note: If you have cloned from the git repository, please rename the resulting folder to "frontend_authentication"
+
+
 1. Upload the 'frontend_authentication' folder in this archive to your Symphony 'extensions' folder.
 
 2. Enable it by selecting the "Front End Authentication", choose Enable from the with-selected menu, then click Apply.
