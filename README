@@ -23,7 +23,7 @@ This extension is useful for protecting specific pages of your Symphony powered 
 
 [USAGE]
 
-- Create a new section with 1 field for the username and password
+- Create a new section with 1 field for the username and 1 for the password
 
 - Create a login page with a form resembling the following:
 
